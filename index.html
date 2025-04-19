@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Language to Speech</title>
+  <link rel="stylesheet" href="script.css" />
+  <!-- TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/handpose@0.0.7/dist/handpose.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@2.2.2/dist/posenet.min.js"></script>
+  <!-- MediaPipe -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Sign to Speech Converter</h1>
+    
+    <div class="main-content">
+      <div class="video-container">
+        <video id="webcam" autoplay muted width="640" height="480"></video>
+        <canvas id="output-canvas" width="640" height="480"></canvas>
+      </div>
+      
+      <div class="controls">
+        <div class="status-panel">
+          <div id="gesture-output">
+            Current Gesture: <span id="gesture">None</span>
+          </div>
+          <div id="word-output">
+            Word: <span id="word">[empty]</span>
+          </div>
+          <div id="sentence-output">
+            Sentence: <span id="sentence">[empty]</span>
+          </div>
+        </div>
+        
+        <div class="buttons">
+          <button id="clear-btn" onclick="clearWord()">❌ Clear Word</button>
+          <button id="speak-btn" onclick="speakWord()">🗣️ Speak Word</button>
+          <button id="clear-sentence-btn" onclick="clearSentence()">🗑️ Clear Sentence</button>
+          <button id="speak-sentence-btn" onclick="speakSentence()">🗣️ Speak Sentence</button>
+          <button id="pause-btn" onclick="togglePause()">⏸️ Pause Recognition</button>
+          <button id="mute-btn" onclick="toggleMute()">🔇 Mute Speech</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
